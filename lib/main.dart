@@ -30,6 +30,70 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
     color: backgroundGreyDark,
   );
 
+  Widget _getTopRow(String str1, String str2, String str3, String str4) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        NeumorphicButton(
+          padding: EdgeInsets.all(16),
+          style: buttons,
+          onPressed: () {},
+          child: Text('$str1', style: topBtnsStyle),
+        ),
+        NeumorphicButton(
+          padding: EdgeInsets.all(16),
+          style: buttons,
+          onPressed: () {},
+          child: Text('$str2', style: topBtnsStyle),
+        ),
+        NeumorphicButton(
+          padding: EdgeInsets.all(16),
+          style: buttons,
+          onPressed: () {},
+          child: Text(' $str3 ', style: topBtnsStyle),
+        ),
+        NeumorphicButton(
+          padding: EdgeInsets.all(16),
+          style: buttons,
+          onPressed: () {},
+          child: Text('  $str4  ', style: topBtnsStyle),
+        ),
+      ],
+    );
+  }
+
+  Widget _getNumbersRow(String str1, String str2, String str3, String str4) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        NeumorphicButton(
+          padding: EdgeInsets.all(16),
+          style: buttons,
+          onPressed: () {},
+          child: Text(' $str1 ', style: numberStyle),
+        ),
+        NeumorphicButton(
+          padding: EdgeInsets.all(16),
+          style: buttons,
+          onPressed: () {},
+          child: Text(' $str2 ', style: numberStyle),
+        ),
+        NeumorphicButton(
+          padding: EdgeInsets.all(16),
+          style: buttons,
+          onPressed: () {},
+          child: Text(' $str3 ', style: numberStyle),
+        ),
+        NeumorphicButton(
+          padding: EdgeInsets.all(16),
+          style: buttons,
+          onPressed: () {},
+          child: Text(' $str4  ', style: rightBtnsStyle),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -56,151 +120,11 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text('AC', style: topBtnsStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text('Ce', style: topBtnsStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' % ', style: topBtnsStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text('  /  ', style: topBtnsStyle),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' 7 ', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' 8 ', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' 9 ', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' x  ', style: rightBtnsStyle),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' 4 ', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' 5 ', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' 6 ', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' +  ', style: rightBtnsStyle),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' 1 ', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' 2 ', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' 3 ', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text('  -  ', style: rightBtnsStyle),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text('00', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' 0 ', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' . ', style: numberStyle),
-                              ),
-                              NeumorphicButton(
-                                padding: EdgeInsets.all(16),
-                                style: buttons,
-                                onPressed: () {},
-                                child: Text(' = ', style: rightBtnsStyle),
-                              ),
-                            ],
-                          ),
+                          _getTopRow("AC", "Ce", "%", "/"),
+                          _getNumbersRow("7", "8", "9", "*"),
+                          _getNumbersRow("4", "5", "6", "+"),
+                          _getNumbersRow("1", "2", "3", "-"),
+                          _getNumbersRow("00", "0", " .", "="),
                         ],
                       ),
                     ),
