@@ -1,5 +1,6 @@
 import 'package:calculator_app/utils/colors.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:math_expressions/math_expressions.dart';
 
 void main() {
   runApp(CalculatorApplication());
@@ -29,7 +30,8 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
     color: backgroundGreyDark,
   );
 
-  String userInputNumber = '';
+  var userInputNumber = '';
+  var resault = '';
 
   void buttonPressed(String text) {
     setState(() {
@@ -47,6 +49,7 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
           onPressed: () {
             setState(() {
               userInputNumber = '';
+              resault = '';
             });
           },
           child: Text('$str1', style: topBtnsStyle),
@@ -67,13 +70,17 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
         NeumorphicButton(
           padding: EdgeInsets.all(16),
           style: buttons,
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(str3);
+          },
           child: Text(' $str3 ', style: topBtnsStyle),
         ),
         NeumorphicButton(
           padding: EdgeInsets.all(16),
           style: buttons,
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(str4);
+          },
           child: Text('  $str4  ', style: topBtnsStyle),
         ),
       ],
@@ -112,7 +119,18 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
           padding: EdgeInsets.all(16),
           style: buttons,
           onPressed: () {
-            buttonPressed(str4);
+            if (str4 == "=") {
+              Parser parser = Parser();
+              Expression expression = parser.parse(userInputNumber);
+              ContextModel contextModel = ContextModel();
+              double eval =
+                  expression.evaluate(EvaluationType.REAL, contextModel);
+              setState(() {
+                resault = '$eval';
+              });
+            } else {
+              buttonPressed(str4);
+            }
           },
           child: Text(' $str4  ', style: rightBtnsStyle),
         ),
@@ -125,6 +143,7 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Container(
           color: backgroundGrey,
           child: SafeArea(
@@ -147,6 +166,18 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
                               style: TextStyle(
                                 color: textGreen,
                                 fontSize: 28.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              resault,
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                color: textGrey,
+                                fontSize: 64.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
