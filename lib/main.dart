@@ -1,5 +1,4 @@
 import 'package:calculator_app/utils/colors.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 void main() {
@@ -30,6 +29,14 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
     color: backgroundGreyDark,
   );
 
+  String userInputNumber = '';
+
+  void buttonPressed(String text) {
+    setState(() {
+      userInputNumber = userInputNumber + text;
+    });
+  }
+
   Widget _getTopRow(String str1, String str2, String str3, String str4) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -37,13 +44,24 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
         NeumorphicButton(
           padding: EdgeInsets.all(16),
           style: buttons,
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              userInputNumber = '';
+            });
+          },
           child: Text('$str1', style: topBtnsStyle),
         ),
         NeumorphicButton(
           padding: EdgeInsets.all(16),
           style: buttons,
-          onPressed: () {},
+          onPressed: () {
+            setState(() {
+              if (userInputNumber.length != 0) {
+                userInputNumber =
+                    userInputNumber.substring(0, userInputNumber.length - 1);
+              }
+            });
+          },
           child: Text('$str2', style: topBtnsStyle),
         ),
         NeumorphicButton(
@@ -69,25 +87,33 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
         NeumorphicButton(
           padding: EdgeInsets.all(16),
           style: buttons,
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(str1);
+          },
           child: Text(' $str1 ', style: numberStyle),
         ),
         NeumorphicButton(
           padding: EdgeInsets.all(16),
           style: buttons,
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(str2);
+          },
           child: Text(' $str2 ', style: numberStyle),
         ),
         NeumorphicButton(
           padding: EdgeInsets.all(16),
           style: buttons,
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(str3);
+          },
           child: Text(' $str3 ', style: numberStyle),
         ),
         NeumorphicButton(
           padding: EdgeInsets.all(16),
           style: buttons,
-          onPressed: () {},
+          onPressed: () {
+            buttonPressed(str4);
+          },
           child: Text(' $str4  ', style: rightBtnsStyle),
         ),
       ],
@@ -109,6 +135,24 @@ class _CalculatorApplicationState extends State<CalculatorApplication> {
                     child: Container(
                       height: 100,
                       color: backgroundGreyDark,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              userInputNumber,
+                              textAlign: TextAlign.end,
+                              style: TextStyle(
+                                color: textGreen,
+                                fontSize: 28.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                     flex: 3,
                   ),
